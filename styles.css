@@ -40,9 +40,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 30px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: italic;
 }
 
 .btn1 span{

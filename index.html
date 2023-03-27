@@ -6,7 +6,7 @@
         <title>Noodle Forum</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="style.css">
         <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/originals/c5/a8/43/c5a8433230a795e52f2e6e9f84f1cf53.jpg">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     </head>
@@ -75,8 +75,19 @@
                 </div>
             </div>
         </nav>
-        
-        <script src="script.js"></script>
+        <div class="page-content">
+            <form class="form">
+                <input
+                    name="content"
+                    type="text"
+                    placeholder="Schreibe deinen Text..."
+                />
+                <input type="hidden" name="user" value="Hans Wurst" />
+                <button type="submit">Submit</button>
+            </form>
+            <div id="container-comment" class="posts"></div>
+            <script src="main.js"></script>
+        </div>
 
     </body>
 </html>

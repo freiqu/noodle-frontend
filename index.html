@@ -1,21 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Noodle</title>
+    <title>Noodle Forum</title>
 </head>
-<body>
-    <form method="POST">
-        <input type="text" id="post" name="post" placeholder="Schreibe deinen Text...">
-        <input class="submit" type="submit" value="Abschicken"><br />
-    </form>
-    <div class="textbox">
-        <p>Content Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia ad porro pariatur laudantium voluptatum quia repellat repudiandae harum in quisquam nihil earum veniam odit cupiditate dolores, quod distinctio facere aspernatur voluptas quas itaque repellendus cumque ex. Illum molestias optio deleniti modi in voluptas tempore illo eius ratione doloribus similique, praesentium nobis nisi officia cumque impedit eos sint dicta, quae earum repudiandae harum ipsam molestiae consequatur? Fugit et voluptatem itaque distinctio voluptas vitae quis placeat ducimus accusamus nam doloribus sit, unde dicta excepturi reprehenderit illum dolor corrupti maiores nobis nulla a. Quidem nam, dolore facere magni voluptate corrupti officiis nesciunt tempora facilis earum ullam veritatis dolorem optio eos voluptates recusandae amet fugit magnam obcaecati at porro impedit molestiae. Illum veniam eveniet saepe quisquam vitae, iusto, dolorem autem laborum distinctio debitis illo! Est repellat, numquam blanditiis corporis at illum recusandae omnis fuga mollitia rerum debitis amet harum odio quam, vitae tempore deleniti, optio perspiciatis?</p>
-        <p style="text-align: left"><i>{{ user }}<span style="float:right">{{ time }}</span></i></p>
 
+<body>
+    <form class="form">
+        <input name="content" type="text" placeholder="Schreibe deinen Text...">
+        <input type="hidden" name="user" value="Hans Wurst">
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const formE1 = document.querySelector('.form');
+
+        formE1.addEventListener('submit', event => {
+            event.preventDefault();
+
+            const formData = new FormData(formE1);
+            const data = Object.fromEntries(formData);
+
+            fetch('http://127.0.0.1:5000/posts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => res.json())
+                .then(data => console.log(data))
+                .catch(error => console.log(error));
+        });
+    </script>
+
+    <div class="textbox">
+        <p>Content Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia ad porro pariatur laudantium
+            voluptatum quia repellat repudiandae harum in quisquam nihil earum veniam odit cupiditate dolores, quod
+            distinctio facere aspernatur voluptas quas itaque repellendus cumque ex. Illum molestias optio deleniti modi
+            in voluptas tempore illo eius ratione doloribus similique, praesentium nobis nisi officia cumque impedit eos
+            sint dicta, quae earum repudiandae harum ipsam molestiae consequatur? Fugit et voluptatem itaque distinctio
+            voluptas vitae quis placeat ducimus accusamus nam doloribus sit, unde dicta excepturi reprehenderit illum
+            dolor corrupti maiores nobis nulla a. Quidem nam, dolore facere magni voluptate corrupti officiis nesciunt
+            tempora facilis earum ullam veritatis dolorem optio eos voluptates recusandae amet fugit magnam obcaecati at
+            porro impedit molestiae. Illum veniam eveniet saepe quisquam vitae, iusto, dolorem autem laborum distinctio
+            debitis illo! Est repellat, numquam blanditiis corporis at illum recusandae omnis fuga mollitia rerum
+            debitis amet harum odio quam, vitae tempore deleniti, optio perspiciatis?</p>
+        <p style="text-align: left"><i>{{ user }}<span style="float:right">{{ time }}</span></i></p>
     </div>
 </body>
+
 </html>

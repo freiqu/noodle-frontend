@@ -1,15 +1,15 @@
 .one-post {
-    background-color: darkgray;
-    border-radius: 20px;
-    padding: 5px;
+    background-color: rgb(255, 252, 252);
+    border-radius: 15px;
+    padding: 20px;
     ;
     max-width: 1000px;
     margin: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    min-width: 300px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    min-width: 200px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
@@ -22,9 +22,9 @@
 }
 
 :root {
-    --body-color: #E4E9F7;
+    --body-color: #3f548f;
     --sidebar-color: #FFF;
-    --primary-color: #695CFE;
+    --primary-color: #8079d4;
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #707070;
@@ -260,7 +260,7 @@ body {
 .textbox {
     position: absolute;
     top: 10%;
-    border: 2px solid rgb(255, 255, 255);
+    border: 2px solid rgb(255, 253, 253);
     border-style: groove;
 
 }
@@ -277,7 +277,7 @@ body.dark .switch::before {
 
 .submit {
     position: absolute;
-    top: 6%;
+    top: 10%;
 
 }
 

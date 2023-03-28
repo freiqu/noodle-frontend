@@ -3,26 +3,80 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Noodle Forum | Home</title>
+        <title>Noodle</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/originals/c5/a8/43/c5a8433230a795e52f2e6e9f84f1cf53.jpg">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     </head>
-    <body> 
-        <div class="row">
-            <div class="col-1">
-                <h1 class="headline">Noodle Home</h1>
-                <br>
-                <p  class="text1" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                <br>
-                <hr>
-                <br>
-                <div class="Button"> 
-                    <a href="#" class="btn1">Jetzt Ausprobieren</a>
+    <body>
+        <nav class="sidebar">
+            <header>
+                <div class="image-text">
+                    <span class="image">
+                        <img src="https://i.pinimg.com/originals/c5/a8/43/c5a8433230a795e52f2e6e9f84f1cf53.jpg" alt="logo">
+                    </span>
+                    
+                    <div class="text header-text">
+                        <span class="name">Noodle</span>
+                        <span class="profession">Navigation</span>
+                    </div>
+                </div>
+
+                <!-- <i class='bx bx-chevron-right toggle'></i> -->
+            </header>
+
+            <div class="menu-bar">
+                <div class="menu">
+                    <li class="search-box">
+                            <i class='bx bx-search icon' ></i>
+                            <input type="search" placeholder="Search...">
+                        </a>
+                    </li>
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-home-alt-2 icon' ></i>
+                                <span class="text nav-text">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-news icon' ></i>
+                                <span class="text nav-text">News</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-plus-circle icon' ></i>
+                                <span class="text nav-text">Create New</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-label icon'></i>
+                                <span class="text nav-text">About</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bottom-content">
+                    <li class="mode">
+                        <div class="moon-sun">
+                            <i class='bx bx-moon icon moon'></i>
+                            <i class='bx bx-sun icon sun'></i>
+                        </div>
+                        <span class="mode-text text">Dark Mode</span>
+                        <div class="toggle-switch">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
                 </div>
             </div>
-            <img class="bild" src="https://us.123rf.com/450wm/dragomirescu/dragomirescu1812/dragomirescu181200884/114180312-alphabet-buchstabe-n-logo-design-blau-und-rosa-farbe-geeignet-f%C3%BCr-ein-unternehmen-oder-ein.jpg?ver=6">
-        </div>
-</body>
+        </nav>
+        
+        <script src="script.js"></script>
+
+    </body>
 </html>

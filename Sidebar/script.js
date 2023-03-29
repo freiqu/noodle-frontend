@@ -1,3 +1,5 @@
+
+
 const body = document.querySelector("body")
     sidebar = body.querySelector(".sidebar"),
     toggle = body.querySelector(".toggle"),
@@ -13,3 +15,12 @@ const body = document.querySelector("body")
     modeSwitch.addEventListener("click", () =>{
         body.classList.toggle("dark");
     });
+
+let links = document.querySelectorAll("a.iframe-link");
+links.forEach((linkElement) => {
+    linkElement.addEventListener("click", (e) => {
+        e.preventDefault();
+        let link = linkElement.pathname;
+        document.getElementById("main-frame").src = link;
+    })
+})

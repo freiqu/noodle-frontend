@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(234, 234, 248);
+    
 }
 
 #post {
@@ -17,9 +17,17 @@ body {
 .textbox {
     position: absolute;
     top: 10%;
-    border: 2px solid rgb(255, 255, 255);
-    border-style: groove;
-
+    width: 60%;
+    background-color: lightgray;
+    border-radius: 20px;
+    padding: 5px;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-width: 300px;
     
 } 
 

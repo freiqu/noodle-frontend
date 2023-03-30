@@ -19,26 +19,55 @@ function remove() {
     removeAllChildNodes(container);
 }
 
+var data;
+
+function firstGet() {
+    fetch("http://127.0.0.1:5000/posts").then((r) => {
+        if (r.ok) {
+            r.json().then((v) => {
+                var comments = v.comments;
+                var container = document.getElementById("container-comment");
+                comments.reverse();
+                data = comments;
+                for (let i in comments) {
+                        container.innerHTML +=
+                        `<div class="one-post" style="width: ` + width() + `px" id="id` + comments[i].id + `">
+                            <button onclick="deletePost(this.id)" id="` + comments[i].id + `"><img src="remove.png" width="30px"></button>
+                            <p>` + comments[i].content + `</p>
+                            <p class="user-time" style="text-align: left;` + (width()-40) + `px;">` + comments[i].user + `
+                                <span style="text-align: right;">` + comments[i].time + `</span>
+                            </p>
+                        </div>`;
+                }
+            });
+        }
+    });
+}
+
 function get() {
-  fetch("http://127.0.0.1:5000/posts").then((r) => {
-      if (r.ok) {
-          r.json().then((v) => {
-              var comments = v.comments;
-              var container = document.getElementById("container-comment");
-              comments.reverse()
-              for (let i in comments) {
-                    container.innerHTML +=
-                    `<div class="one-post" style="width: ` + width() + `px" id="id` + comments[i].id + `">
-                        <button onclick="deletePost(this.id)" id="` + comments[i].id + `"><img src="remove.png" width="30px"></button>
-                        <p>` + comments[i].content + `</p>
-                        <p class="user-time" style="text-align: left;` + (width()-40) + `px;">` + comments[i].user + `
-                            <span style="text-align: right;">` + comments[i].time + `</span>
-                        </p>
-                    </div>`;
-              }
-          });
-      }
-  });
+    fetch("http://127.0.0.1:5000/posts").then((r) => {
+        if (r.ok) {
+            r.json().then((v) => {
+                var comments = v.comments;
+                var container = document.getElementById("container-comment");
+                comments.reverse();
+                if (data == comments) {
+
+                } else {
+                    for (let i in comments) {
+                            container.innerHTML +=
+                            `<div class="one-post" style="width: ` + width() + `px" id="id` + comments[i].id + `">
+                                <button onclick="deletePost(this.id)" id="` + comments[i].id + `"><img src="remove.png" width="30px"></button>
+                                <p>` + comments[i].content + `</p>
+                                <p class="user-time" style="text-align: left;` + (width()-40) + `px;">` + comments[i].user + `
+                                    <span style="text-align: right;">` + comments[i].time + `</span>
+                                </p>
+                            </div>`;
+                    }
+                }
+            });
+        }
+    });
 }
 
 function insert() {
@@ -78,8 +107,8 @@ function deletePost(id) {
 }
 
 insert()
-get()
+firstGet()
 var intervalId = window.setInterval(function(){
     remove()
     get()
-}, 6000);
+}, 1000);

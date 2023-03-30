@@ -55,14 +55,23 @@ function get() {
 
                 } else {
                     for (let i in comments) {
-                            container.innerHTML +=
-                            `<div class="one-post" style="width: ` + width() + `px" id="id` + comments[i].id + `">
-                                <button onclick="deletePost(this.id)" id="` + comments[i].id + `"><img src="remove.png" width="30px"></button>
-                                <p>` + comments[i].content + `</p>
-                                <p class="user-time" style="text-align: left;` + (width()-40) + `px;">` + comments[i].user + `
-                                    <span style="text-align: right;">` + comments[i].time + `</span>
-                                </p>
-                            </div>`;
+                        var up = 0, down = 0;
+                        container.innerHTML +=
+                        `<div class="one-post" style="width: ` + width() + `px" id="id` + comments[i].id + `">
+                            <button onclick="deletePost(this.id)" id="` + comments[i].id + `"><img src="remove.png" width="30px"></button>
+                            <p>` + comments[i].content + `</p>
+                            <p class="user-time" style="text-align: left;` + (width()-40) + `px;">` + comments[i].user + `
+                                <span style="text-align: right;">` + comments[i].time + `</span>
+                            </p>
+                            <button id="up` + comments[i].id.toString() + `" onlick="up(this.id)">
+                                <img src="thumb-up.png" height="20px" width="20px">
+                                <p>` + up.toString() + `</p>
+                            </button>
+                            <button id="down`+ comments[i].id.toString() + `" onlick="down(this.id)">
+                                <img src="thumb-down.png" height="20px" width="20px">
+                                <p>` + down.toString() + `</p>
+                            </button>
+                        </div>`;
                     }
                 }
             });
@@ -106,9 +115,32 @@ function deletePost(id) {
     get()
 }
 
+function up(id) {
+    id = id.substring(2);
+    data = {'id': id, "updown": "up"}
+    fetch('http://127.0.0.1:5000/posts/thumb', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+}
+
+function down(id) {
+    data = {'id': id, "updown": "down"}
+    fetch('http://127.0.0.1:5000/posts/thumb', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+}
+
 insert()
 firstGet()
 var intervalId = window.setInterval(function(){
     remove()
     get()
-}, 5000);
+}, 95000);

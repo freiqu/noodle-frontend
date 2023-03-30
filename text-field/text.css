@@ -33,14 +33,14 @@ button {
     border-radius: 8px;
     background-color: rgb(212, 216, 238);
     margin-top: 15px;
-    
+
 }
 
-.textfield{
+.form{
     position: relative;
     width: 250px;
 }
-.textfield input{
+.form input{
     height: 50px;
     width: 500px;
     padding: 10px;

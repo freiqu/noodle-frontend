@@ -2,14 +2,16 @@
     background-color: darkgray;
     border-radius: 20px;
     padding: 5px;
-    ;
-    max-width: 1000px;
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 20px;
+}
+
+.one-post p {
     min-width: 300px;
+    max-width: 1000px;
+    text-align: justify
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');

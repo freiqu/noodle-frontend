@@ -111,4 +111,4 @@ firstGet()
 var intervalId = window.setInterval(function(){
     remove()
     get()
-}, 1000);
+}, 5000);

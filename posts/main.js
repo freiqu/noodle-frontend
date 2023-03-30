@@ -82,4 +82,4 @@ get()
 var intervalId = window.setInterval(function(){
     remove()
     get()
-}, 60000);
+}, 6000);

@@ -46,9 +46,28 @@ function width() {
     return w;
 }
 
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
+
 function remove() {
     const container = document.querySelector('#container-comment');
     removeAllChildNodes(container);
+}
+
+function deletePost(id) {
+    data = {'id': id}
+    fetch('http://127.0.0.1:5000/posts', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    remove()
+    get()
 }
 
 function get() {
@@ -62,7 +81,7 @@ function get() {
               for (let i in comments) {
                     container.innerHTML +=
                     `<div class="one-post" style="width: ` + width() + `px" id="id` + comments[i].id + `">
-                        <button onclick="remove()" id="` + comments[i].id + `"><img src="remove.png"></button>
+                        <button onclick="deletePost(this.id)" id="` + comments[i].id + `"><img src="remove.png" width="30px"></button>
                         <p>` + comments[i].content + `</p>
                         <p class="user-time" style="text-align: left;` + (width()-40) + `px;">` + comments[i].user + `
                             <span style="text-align: right;">` + comments[i].time + `</span>
@@ -72,17 +91,6 @@ function get() {
           });
       }
   });
-}
-
-function removeAllChildNodes(parent) {
-  while (parent.firstChild) {
-      parent.removeChild(parent.firstChild);
-  }
-}
-
-function remove() {
-    const container = document.querySelector('#container-comment');
-    removeAllChildNodes(container);
 }
 
 darkmode()

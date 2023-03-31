@@ -146,4 +146,4 @@ remove()
 var intervalId = window.setInterval(function(){
     remove()
     get()
-}, 95000);
+}, 5000);

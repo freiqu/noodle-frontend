@@ -30,14 +30,21 @@ function firstGet() {
                 comments.reverse();
                 data = comments;
                 for (let i in comments) {
-                        container.innerHTML +=
-                        `<div class="one-post" style="width: ` + width() + `px" id="id` + comments[i].id + `">
-                            <button onclick="deletePost(this.id)" id="` + comments[i].id + `"><img src="remove.png" width="30px"></button>
-                            <p>` + comments[i].content + `</p>
-                            <p class="user-time" style="text-align: left;` + (width()-40) + `px;">` + comments[i].user + `
-                                <span style="text-align: right;">` + comments[i].time + `</span>
-                            </p>
-                        </div>`;
+                    var up = 0, down = 0;
+                    container.innerHTML +=
+                    `<div class="one-post" style="width: ` + width() + `px" id="id` + comments[i].id + `">
+                        <button onclick="deletePost(this.id)" id="` + comments[i].id + `"><img src="remove.png" width="30px"></button>
+                        <p>` + comments[i].content + `</p>
+                        <p class="user-time" style="text-align: left;` + (width()-40) + `px;">` + comments[i].user + `
+                            <span style="text-align: right;">` + comments[i].time + `</span>
+                        </p>
+                        <button id="up` + comments[i].id.toString() + `" onclick="up(this.id)">
+                            <img src="thumb-up.png" height="20px" width="20px" style="margin-right: 5px;"> ` + comments[i].up + `
+                        </button>
+                        <button id="down`+ comments[i].id.toString() + `" onclick="down(this.id)">
+                            <img src="thumb-down.png" height="20px" width="20px" style="margin-right: 5px;"> ` + comments[i].down + `
+                        </button>
+                    </div>`;
                 }
             });
         }
@@ -63,13 +70,11 @@ function get() {
                             <p class="user-time" style="text-align: left;` + (width()-40) + `px;">` + comments[i].user + `
                                 <span style="text-align: right;">` + comments[i].time + `</span>
                             </p>
-                            <button id="up` + comments[i].id.toString() + `" onlick="up(this.id)">
-                                <img src="thumb-up.png" height="20px" width="20px">
-                                <p>` + up.toString() + `</p>
+                            <button id="up` + comments[i].id.toString() + `" onclick="up(this.id)">
+                                <img src="thumb-up.png" height="20px" width="20px" style="margin-right: 5px;"> ` + comments[i].up + `
                             </button>
-                            <button id="down`+ comments[i].id.toString() + `" onlick="down(this.id)">
-                                <img src="thumb-down.png" height="20px" width="20px">
-                                <p>` + down.toString() + `</p>
+                            <button id="down`+ comments[i].id.toString() + `" onclick="down(this.id)">
+                                <img src="thumb-down.png" height="20px" width="20px" style="margin-right: 5px;"> ` + comments[i].down + `
                             </button>
                         </div>`;
                     }
@@ -98,8 +103,6 @@ function insert() {
             .then(data => console.log(data))
             .catch(error => console.log(error));
     });
-    remove()
-    get()
 }
 
 function deletePost(id) {
@@ -116,7 +119,6 @@ function deletePost(id) {
 }
 
 function up(id) {
-    id = id.substring(2);
     data = {'id': id, "updown": "up"}
     fetch('http://127.0.0.1:5000/posts/thumb', {
         method: 'POST',
@@ -140,6 +142,7 @@ function down(id) {
 
 insert()
 firstGet()
+remove()
 var intervalId = window.setInterval(function(){
     remove()
     get()
